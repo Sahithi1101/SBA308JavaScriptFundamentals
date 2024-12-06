@@ -173,7 +173,7 @@ I found a 10. High five!
 For numbers divisible by both three and five, be sure your code prints both messages
 */
 for (let i = 0; i<100; i++){
-    if (0===i % 5 && i % 3===0){
+    if (i % 5 === 0 && i % 3===0){
         console.log("I found a "+i+". High five!");
         console.log("I found a "+i+". Three is a crowd");
     }
@@ -493,11 +493,11 @@ In case of a tie, the method should return the word that appears first in the ar
 console.log(printLongestWord(["BoJack", "Princess", "Diane", "a", "Max", "Peanutbutter", "big", "Todd"]));
 => "Peanutbutter"
 */
-const printLongestWord = (strArray) => {
+const printLongestWord = (Array) => {
 	let longestWord = '';
-	for (let i = 0; i < strArray.length; i++){
-		if (strArray[i].length > longestWord.length){
-			longestWord = strArray[i];
+	for (let i = 0; i < Array.length; i++){
+		if (Array[i].length > longestWord.length){
+			longestWord = Array[i];
 		}
 	};
 	return longestWord;
@@ -656,3 +656,79 @@ const cat2 ={
 }
 console.log(cat2.age);
 console.log(cat2.breed);
+
+// /*
+// 3. Combine Cats!
+// The cats are multiplying!
+
+// Write a function combineCats that has two parameters mama, and papa. The function will take two arguments -- each a cat object.
+// */
+function combineCats(mama,papa){
+    console.log(mama);
+    console.log(papa);
+}
+
+// Example:
+// combineCats(cat1, cat2)
+// { name: "Joe", age: 19, breed: "Mog" }
+// { name: "Jam", age: 45, breed: "Siamese" }
+// This is to demonstrate that functions can take objects as arguments
+// You could also invoke the combineCatsfunction by writing the objects straight into the parentheses:
+// combineCats({ name: "Craig", age: 20, breed: "unknown" }, { name: "Linda", age: 20, breed: "undefined" });
+// Make it so the combineCatsfunction will return a combination of the two incoming cats
+// The result should be an object wherein the
+// name is a concatenation of the parents' names
+// the age is 1
+// the breed is each of the parents' breeds with a hyphen in between
+// Example:
+// console.log(combineCats(cat1, cat2));
+// Result:
+// This is to demonstrate that a function can return an object
+
+/*
+4. Cat brain bender
+If combineCatsreturns an object, and if combineCatstakes objects as arguments, then it stands to reason that:
+catCombinatorcan use itself as its own argument.
+Take a second to stew on that . . .
+What is the result of:
+console.log(combineCats(combineCats(cat1, cat2), combineCats(cat1, cat2)));
+Whoa . . .
+The above console.log is two levels deep of combineCats.
+Write a console.log that is three levels deep of combineCats. combineCats should have two arguments, each which are combineCats, each which have two arguments, each which are combineCats.
+Your output should look something like:
+*/
+function combineCats(mama, papa) {
+    console.log(mama);
+    console.log(papa);
+  }
+  
+// Pass cat1and cat2as arguments to the combineCatsfunction. The function should console.log them.
+  function combineCats(cat1, cat2){
+  console.log(combineCats(cat1, cat2));
+}
+
+  function combineCats(mama, papa) {
+    return {
+      name: mama.name + papa.name, 
+      age: 1, 
+      breed: mama.breed + "-" + papa.breed 
+    };
+  };
+
+ 
+  let Cat1 = { name: "Joe", age: 19, breed: "Mog" };
+  let Cat2 = { name: "Jam", age: 45, breed: "Siamese" };
+  console.log(combineCats(Cat1, Cat2)); 
+  
+  
+ //example
+  let cat3 = { name: "Joe", age: 19, breed: "Mog" };
+  let cat4 = { name: "Jam", age: 45, breed: "Siamese" };
+  //three level deep
+     console.log(
+    combineCats(
+      combineCats(combineCats(cat3, cat4), combineCats(cat3, cat4)),
+      combineCats(combineCats(cat3, cat4), combineCats(cat3, cat4))
+    )
+  );
+
